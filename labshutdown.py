@@ -1,5 +1,5 @@
 #
-# labshutdown.py - Kyle
+# labshutdown.py - idchoppers
 #
 # Reads targets from a txt file and runs a shutdown command on each target
 

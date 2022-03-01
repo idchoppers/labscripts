@@ -1,5 +1,5 @@
 #
-# labscanner.py - Kyle
+# labscanner.py - idchoppers
 #
 # Scans network for hosts with port 135 (RPC) open and grabs their IP and FQDN assigned by the Domain Controller
 # The computer must have connected to the domain at some point or else port 135 will not be open

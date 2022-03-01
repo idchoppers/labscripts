@@ -6,7 +6,7 @@
 
 import socket
 
-network = '192.168.0.'
+network = '179.16.0.'
 
 def IsUp(addr):
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -20,7 +20,7 @@ def IsUp(addr):
 # TODO: Un-YanDev this mess
 datstrip = str(input("Do you want IPs, FQDNs, or both? (i or f or b): "))
 if datstrip == 'i':
-    with open(r"/home/ks/targets.txt", "w") as f:
+    with open(r"%USERPROFILE%\Documents\targets.txt", "w") as f:
         for i in range(1,255):
             # TODO: Make this supporrt the complete Class B range
             addr = network + str(i)
@@ -28,7 +28,7 @@ if datstrip == 'i':
                 f.write("%s\n" %(addr))
                 print("%s" %(addr))
 elif datstrip == 'f':
-    with open(r"/home/ks/targets.txt", "w") as f:
+    with open(r"%USERPROFILE%\Documents\targets.txt", "w") as f:
         for i in range(1,255):
             # TODO: Make this supporrt the complete Class B range
             addr = network + str(i)
@@ -36,7 +36,7 @@ elif datstrip == 'f':
                 f.write("%s\n" %(socket.getfqdn(addr)))
                 print("%s" %(socket.getfqdn(addr)))
 elif datstrip == 'b':
-    with open(r"/home/ks/targets.txt", "w") as f:
+    with open(r"%USERPROFILE%\Documents\targets.txt", "w") as f:
         for i in range(1,255):
             # TODO: Make this supporrt the complete Class B range
             addr = network + str(i)

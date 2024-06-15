@@ -7,6 +7,8 @@
 #
 # USE AH'S DECRYPTION SOFTWARE, IT IS BETTER!
 #
+# Copyright 2022 Kyle Smith
+# Licensed under GPL-3.0-or-later
 
 import sys
 import os

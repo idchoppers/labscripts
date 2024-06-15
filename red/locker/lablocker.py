@@ -14,6 +14,9 @@
 #
 # Usage: lablocker.py <<Username>>
 # Or instead of argv, you can mod this to a specific target
+#
+# Copyright 2022 Kyle Smith
+# Licensed under GPL-3.0-or-later
 
 import time
 import os

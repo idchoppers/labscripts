@@ -3,6 +3,9 @@
 #
 # Scans network for hosts with port 135 (RPC) open and grabs their IP and FQDN assigned by the Domain Controller
 # The computer must have connected to the domain at some point or else port 135 will not be open
+#
+# Copyright 2022 Kyle Smith
+# Licensed under GPL-3.0-or-later
 
 import socket
 
